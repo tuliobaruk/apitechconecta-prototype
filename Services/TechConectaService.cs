@@ -2,6 +2,7 @@
 using apitechconecta_prototype.Configurations;
 using MongoDB.Driver;
 using Microsoft.Extensions.Options;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace apitechconecta_prototype.Services;
 
@@ -10,6 +11,7 @@ public class TechConectaService
     private readonly IMongoCollection<Post> _postCollection;
     private readonly IMongoCollection<Comment> _commentCollection;
     private readonly IMongoCollection<User> _userCollection;
+    private readonly IMongoCollection<Images> _imageCollection;
 
     public TechConectaService(IOptions<DatabaseSettings> databaseSettings)
     {
@@ -19,6 +21,7 @@ public class TechConectaService
         _postCollection = database.GetCollection<Post>(databaseSettings.Value.PostsCollectionName);
         _commentCollection = database.GetCollection<Comment>(databaseSettings.Value.CommentsCollectionName);
         _userCollection = database.GetCollection<User>(databaseSettings.Value.UsersCollectionName);
+        _imageCollection = database.GetCollection<Images>(databaseSettings.Value.ImagesCollectionName);
     }
 
     // Posts
@@ -53,4 +56,11 @@ public class TechConectaService
 
     public async Task<List<User>> GetUsersAsync() =>
         await _userCollection.Find(_ => true).ToListAsync();
+
+    // Images
+
+    public async Task InsertOneAsync(Images imagem)
+    {
+        await _imageCollection.InsertOneAsync(imagem);
+    }
 }
