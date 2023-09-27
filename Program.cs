@@ -13,12 +13,25 @@ builder.Services.AddSingleton<TechConectaService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+#region [Cors]
+builder.Services.AddCors();
+#endregion
+
 var app = builder.Build();
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+#region [Cors]
+app.UseCors(c =>
+{
+    c.AllowAnyMethod();
+    c.AllowAnyOrigin();
+    c.AllowAnyHeader();
+});
+#endregion
 
 app.UseAuthorization();
 app.MapControllers();
