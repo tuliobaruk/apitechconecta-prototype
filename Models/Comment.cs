@@ -13,14 +13,17 @@ namespace apitechconecta_prototype.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? ObjectId { get; set; }
 
-        [BsonElement("post-id")]
+        [BsonElement("postId")]
         public int PostId { get; set; }
+        
+        [BsonElement("commentId")]
+        public int CommentId { get; set; }
 
-        [BsonElement("creator-id")]
-        public int CreatorId { get; set; }
+        [BsonElement("creator")]
+        public User? Creator { get; set; }
 
-        [BsonElement("creation-date")]
-        public string? CreationDate { get; set; }
+        [BsonElement("createdAt")]
+        public string? CreatedAt { get; set; }
 
         [BsonElement("content")]
         public string? Content { get; set; }

@@ -13,16 +13,16 @@ namespace apitechconecta_prototype.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? ObjectId { get; set; }
 
-        [BsonElement("post-id")]
+        [BsonElement("postId")]
         public int PostId { get; set; }
 
-        [BsonElement("creator-id")]
-        public int CreatorId { get; set; }
+        [BsonElement("creator")]
+        public User? Creator { get; set; }
 
         [BsonElement("category")]
         public string? Category { get; set; }
         
-        [BsonElement("creation-date")]
+        [BsonElement("createdAt")]
         public string? CreatedAt { get; set; } = default;
 
         [BsonElement("title")]
@@ -34,10 +34,10 @@ namespace apitechconecta_prototype.Models
         [BsonElement("content")]
         public string? Content { get; set; }
 
-        [BsonElement("post-image")]
+        [BsonElement("postImage")]
         public string? PostImage { get; set; } = null;
 
-        [BsonElement("post-views")]
+        [BsonElement("postViews")]
         public int? PostViews { get; set; }
     }
 }

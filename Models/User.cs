@@ -13,13 +13,13 @@ namespace apitechconecta_prototype.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? ObjectId { get; set; }
 
-        [BsonElement("user-id")]
+        [BsonElement("id")]
         public int UserId { get; set; }
 
         [BsonElement("username")]
         public string? Username { get; set; }
 
-        [BsonElement("e-mail")]
+        [BsonElement("email")]
         public string? Email { get; set; }
 
         [JsonIgnore]
